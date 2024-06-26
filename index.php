@@ -1,22 +1,17 @@
 <?php session_start(); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
+	<link rel="stylesheet" href="css/bootstrap.css"/>
 	<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1"/>
 </head>
+
 <body>
-	<nav class="navbar navbar-default">
-		<div class="container-fluid">
-			<a class="navbar-brand" href="https://sourcecodester.com">Sourcecodester</a>
-		</div>
-	</nav>
-	<div class="col-md-3"></div>
-	<div class="col-md-6 well">
-		<h3 class="text-primary">PHP - PDO Login and Registration</h3>
-		<hr style="border-top:1px dotted #ccc;"/>
-		<div class="col-md-2"></div>
-		<div class="col-md-8">
+
+<!--LOGIN FORM AND MESSAGES-->
+	
+			<!-- This PHP block outputs the text of the session message. -->
 			<?php if(isset($_SESSION['message'])): ?>
 				<div class="alert alert-<?php echo $_SESSION['message']['alert'] ?> msg"><?php echo $_SESSION['message']['text'] ?></div>
 			<script>
@@ -32,6 +27,8 @@
 				// clearing the message
 				unset($_SESSION['message']);
 			?>
+
+			<!-- This form sends a POST request to "login_query.php" when submitted. -->
 			<form action="login_query.php" method="POST">	
 				<h4 class="text-success">Login here...</h4>
 				<hr style="border-top:1px groovy #000;">
@@ -52,4 +49,6 @@
 		</div>
 	</div>
 </body>
+<!--LOGIN FORM AND MESSAGES-->
+
 </html>
