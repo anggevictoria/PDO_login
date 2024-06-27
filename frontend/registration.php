@@ -39,7 +39,7 @@
 				<div class="form-group">
 					<button class="btn btn-primary form-control" name="register">Register</button>
 				</div>
-				<a href="index.php">Login</a>
+				<a href="../index.php">Login</a>
 			</form>
 		</div>
 	</div>
