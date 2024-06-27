@@ -50,7 +50,7 @@
           <input type="submit" value="Login" name="login">
         </form>
         
-        <p class="text--center">Not a member? <a href="registration.php">Register now</a> <svg class="icon">
+        <p class="text--center">Not a member? <a href="frontend/registration.php">Register now</a> <svg class="icon">
               <use xlink:href="#icon-arrow-right"></use>
             </svg></p>
       </div>
