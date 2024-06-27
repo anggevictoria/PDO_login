@@ -31,11 +31,11 @@
 				unset($_SESSION['message']);
 			?>
 
-			<!-- This form sends a POST request to "login_query.php" when submitted. -->
+			<!-- This form sends a POST request to "login.php" when submitted. -->
 			<div class="login-box">
         <h2>Welcome to UrSECRET</h2>
         
-        <form class= "form" action="login_query.php" method="POST">
+        <form class= "form" action="API/login.php" method="POST">
 
           <div class="user-box">
             <input type="text" name="username" required="">
