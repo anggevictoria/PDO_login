@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="frontend/style.css">
 </head>
 
 <body>
@@ -31,11 +31,11 @@
 				unset($_SESSION['message']);
 			?>
 
-			<!-- This form sends a POST request to "login_query.php" when submitted. -->
+			<!-- This form sends a POST request to "login.php" when submitted. -->
 			<div class="login-box">
         <h2>Welcome to UrSECRET</h2>
         
-        <form class= "form" action="login_query.php" method="POST">
+        <form class= "form" action="API/login.php" method="POST">
 
           <div class="user-box">
             <input type="text" name="username" required="">
@@ -50,7 +50,7 @@
           <input type="submit" value="Login" name="login">
         </form>
         
-        <p class="text--center">Not a member? <a href="registration.php">Register now</a> <svg class="icon">
+        <p class="text--center">Not a member? <a href="frontend/registration.php">Register now</a> <svg class="icon">
               <use xlink:href="#icon-arrow-right"></use>
             </svg></p>
       </div>

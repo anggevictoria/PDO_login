@@ -16,7 +16,7 @@
 		<hr style="border-top:1px dotted #ccc;"/>
 		<div class="col-md-2"></div>
 		<div class="col-md-8">
-			<form action="register_query.php" method="POST">	
+			<form action="../API/register_query.php" method="POST">	
 				<h4 class="text-success">Register here...</h4>
 				<hr style="border-top:1px groovy #000;">
 				<div class="form-group">
@@ -39,7 +39,7 @@
 				<div class="form-group">
 					<button class="btn btn-primary form-control" name="register">Register</button>
 				</div>
-				<a href="index.php">Login</a>
+				<a href="../index.php">Login</a>
 			</form>
 		</div>
 	</div>

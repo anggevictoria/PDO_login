@@ -1,6 +1,6 @@
 <?php
 	session_start();
-	require_once 'conn.php';
+	require_once './conn.php';
  
 	if(ISSET($_POST['register'])){
 		if($_POST['firstname'] != "" || $_POST['username'] != "" || $_POST['password'] != ""){
@@ -19,7 +19,7 @@
 			}
 			$_SESSION['message']=array("text"=>"User successfully created.","alert"=>"info");
 			$conn = null;
-			header('location:index.php');
+			header('location:../index.php');
 		}else{
 			echo "
 				<script>alert('Please fill up the required field!')</script>
