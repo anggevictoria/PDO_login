@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <?php
-	require 'conn.php';
+	require '../API/conn.php';
 	session_start();
  
 	if(!ISSET($_SESSION['user'])){
@@ -33,7 +33,7 @@
 				$fetch = $sql->fetch();
 			?>
 			<center><h4><?php echo $fetch['firstname']." ". $fetch['lastname']?></h4></center>
-			<a href = "logout.php">Logout</a>
+			<a href = "../API/logout.php">Logout</a>
 		</div>
 	</div>
 </body>

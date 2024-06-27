@@ -3,7 +3,7 @@
 	// Starts a new session or resumes an existing session. This is necessary for managing user sessions.
 
  
-	require_once '../conn.php';
+	require_once './conn.php';
 	// Includes the database connection file.
 
  
@@ -36,7 +36,7 @@
 				$_SESSION['user'] = $fetch['mem_id'];
 				// Sets the user session with the member ID.
 
-				header("location: ../home.php");
+				header("location: ../frontend/home.php");
 				// Redirects to the home page if login is successful.
 
 			} else{
