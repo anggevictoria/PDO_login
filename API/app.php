@@ -125,7 +125,7 @@ class App extends React.Component {
   render() {
   return (
     <div className="app-container">
-      <LogoutButton /> {/* Move the LogoutButton here */}
+      <LogoutButton /> {/* Positioned here to ensure it's at the top left */}
       <Header
         headerText={this.state.headerText}
         pText={this.state.pText}
@@ -139,6 +139,7 @@ class App extends React.Component {
     </div>
   );
 }
+
 
 
 }
