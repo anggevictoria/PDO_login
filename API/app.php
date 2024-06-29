@@ -35,12 +35,13 @@ class App extends React.Component {
   }
 
   updateUserMessages = newMessage => {
+  const { firstName } = this.props;
   if (!newMessage) {
     return;
   }
 
-  var updatedMessages = this.state.userMessages;
-  var updatedBotMessages = this.state.botMessages;
+  var updatedMessages = [...this.state.userMessages];
+  var updatedBotMessages = [...this.state.botMessages];
 
   this.setState({
     userMessages: updatedMessages.concat(newMessage),
@@ -49,21 +50,21 @@ class App extends React.Component {
 
   let botResponse = '';
 
-  if (!this.state.validResponseGiven) {
-    const emotionPrompt = "How are you feeling today? (joy, sadness, anger, fear, disgust)";
+  if (!this.state.userName) {
     this.setState({
-      botMessages: updatedBotMessages.concat(emotionPrompt),
+      userName: newMessage,
+      botMessages: updatedBotMessages.concat(`How are you feeling today? (joy, sadness, anger, fear, disgust)`),
       botLoading: false
     });
     return;
   }
 
   const emotionResponses = {
-    joy: `Hey ${this.state.userName}, I'm so happy to see you filled with joy! Your positivity is contagious, and it's wonderful to witness your happiness. Keep shining brightly and spreading that joy to everyone around you. Enjoy every moment of this happiness!`,
-    sadness: `Dear ${this.state.userName}, I know you're going through a tough time right now. Please take your time to process everything, and remember that this sadness won't last forever. Sending you lots of love and positive thoughts.`,
-    anger: `Hey ${this.state.userName}, I sense you're feeling upset right now. Remember, it's okay to feel angry sometimes. Take a deep breath and try to channel that energy constructively. I'm here if you need to talk or vent. Hang in there.`,
-    fear: `Hey ${this.state.userName}, I understand you might be feeling scared right now. Just know that it's normal to feel that way sometimes. Take a moment to breathe deeply and focus on things that bring you comfort. You're stronger than your fears, and I'm here to support you through this.`,
-    disgust: `Hey ${this.state.userName}, I sense you're feeling disgusted about something. It's okay to have those feelings—it shows you care about what's important to you. If you want to talk about it or need support, I'm here to listen.`
+    joy: `Hey ${firstName}, I'm so happy to see you filled with joy! Your positivity is contagious, and it's wonderful to witness your happiness. Keep shining brightly and spreading that joy to everyone around you. Enjoy every moment of this happiness!`,
+    sadness: `Dear ${firstName}, I know you're going through a tough time right now. Please take your time to process everything, and remember that this sadness won't last forever. Sending you lots of love and positive thoughts <3`,
+    anger: `Hey ${firstName}, I sense you're feeling upset right now. Remember, it's okay to feel angry sometimes. Take a deep breath and try to channel that energy constructively.`,
+    fear: `Hey ${firstName}, I understand you might be feeling scared right now. Just know that it's normal to feel that way sometimes. Take a moment to breathe deeply and focus on things that bring you comfort. You're stronger than your fears.`,
+    disgust: `Hey ${firstName}, I sense you're feeling disgusted about something. It's okay to have those feelings—it shows you care about what's important to you.`
   };
 
   if (emotionResponses[newMessage]) {
@@ -77,15 +78,13 @@ class App extends React.Component {
       chatLimitReached: true,
     });
   } else {
-    botResponse = "I'm not sure how to respond to that. Could you please tell me if you feel joy, sadness, anger, fear, or disgust?";
+    botResponse = "I'm not sure how to respond to that because the girl who programmed me is dumb at javascript. Could you please tell me if you feel (joy, sadness, anger, fear, or disgust)?";
   }
 
-  if (this.state.chatLimitReached) {
-    botResponse = "?";
-  }
+  updatedBotMessages.push(botResponse);
 
   this.setState({
-    botMessages: updatedBotMessages.concat(botResponse),
+    botMessages: updatedBotMessages,
     botLoading: false
   });
 };
