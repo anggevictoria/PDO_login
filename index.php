@@ -33,7 +33,7 @@
 
 			<!-- This form sends a POST request to "login.php" when submitted. -->
 			<div class="login-box">
-        <h2>Welcome to UrSECRET</h2>
+        <h2>Welcome to CCBot</h2>
         
         <form class= "form" action="API/login.php" method="POST">
 
