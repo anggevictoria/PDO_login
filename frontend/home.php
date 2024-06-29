@@ -1,13 +1,20 @@
 <!DOCTYPE html>
 
 
-<?php /*
+<?php 
 require '../API/conn.php';
 session_start();
 
 if (!isset($_SESSION['user'])) {
     header('location:../index.php');
-}*/
+}
+
+$id = $_SESSION['user'];
+$sql = $conn->prepare("SELECT firstname, lastname FROM `member` WHERE `mem_id`='$id'");
+$sql->execute();
+$fetch = $sql->fetch();
+$firstname = $fetch['firstname'];
+$lastname = $fetch['lastname'];
 ?>
 
 <html lang="en">
@@ -21,16 +28,20 @@ if (!isset($_SESSION['user'])) {
     <script src="https://unpkg.com/react-dom/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/babel-standalone/babel.min.js"></script>
     <script type="text/babel" src="../API/app.php" defer></script>
+    <script type="text/babel">
+        var firstName = "<?php echo $firstname; ?>";
+        var lastName = "<?php echo $lastname; ?>";
+    </script>
 </head>
 
 <body>
 
 <!--
     <?php
-    /*$id = $_SESSION['user'];
+    $id = $_SESSION['user'];
     $sql = $conn->prepare("SELECT * FROM `member` WHERE `mem_id`='$id'");
     $sql->execute();
-    $fetch = $sql->fetch();*/
+    $fetch = $sql->fetch();
     ?> -->
     <div class="background"></div>
     <div id="app"></div>
