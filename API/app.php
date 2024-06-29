@@ -8,7 +8,7 @@ var data = {
   p2Text: "Made by Angela Victoria Fruelda",
   userMessages: [],
   botMessages: [],
-  botGreeting: "oh hi! who are you?",
+  botGreeting: "", // Initialize botGreeting to be dynamic
   botLoading: false,
   emotionalResponsesCount: 0,
   chatLimitReached: false
@@ -18,10 +18,22 @@ class App extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = data;
+    this.state = {
+      ...data,
+      userName: "", // Initialize userName state
+      validResponseGiven: false
+    };
   }
-  
-  
+
+  componentDidMount() {
+    // Set personalized greeting when component mounts
+    const { firstName, lastName } = this.props;
+    const greeting = `Oh hi! Nice to meet you ${firstName} ${lastName}. Can you send any key to continue chatting with me?`;
+    this.setState({
+      botGreeting: greeting
+    });
+  }
+
   updateUserMessages = newMessage => {
   if (!newMessage) {
     return;
@@ -37,10 +49,10 @@ class App extends React.Component {
 
   let botResponse = '';
 
-  if (!this.state.userName) {
+  if (!this.state.validResponseGiven) {
+    const emotionPrompt = "How are you feeling today? (joy, sadness, anger, fear, disgust)";
     this.setState({
-      userName: newMessage,
-      botMessages: updatedBotMessages.concat(`Nice to meet you, ${newMessage}! How are you feeling today? (joy, sadness, anger, fear, disgust)`),
+      botMessages: updatedBotMessages.concat(emotionPrompt),
       botLoading: false
     });
     return;
@@ -65,7 +77,7 @@ class App extends React.Component {
       chatLimitReached: true,
     });
   } else {
-    botResponse = "I'm not sure how to respond to that because the girl who programmed me is dumb at JavaScript. Could you please tell me if you feel joy, sadness, anger, fear, or disgust?";
+    botResponse = "I'm not sure how to respond to that. Could you please tell me if you feel joy, sadness, anger, fear, or disgust?";
   }
 
   if (this.state.chatLimitReached) {
@@ -77,7 +89,6 @@ class App extends React.Component {
     botLoading: false
   });
 };
-
 
 
   scrollBubble = element => {
@@ -234,4 +245,8 @@ var UserInput = props => {
   );
 };
 
-ReactDOM.render(<App />, document.getElementById("app"));
+// Pass firstName and lastName props from PHP variables
+ReactDOM.render(
+  <App firstName={firstName} lastName={lastName} />,
+  document.getElementById("app")
+);
