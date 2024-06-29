@@ -4,8 +4,8 @@ header("Content-Type: application/javascript");
 // JavaScript code starts here
 var data = {
   headerText: "hello hello ✨",
-  pText: "I'm one (1) cute bot!",
-  p2Text: "Made with React + Dialogflow",
+  pText: "I'm CCBot (cute chatbot)!",
+  p2Text: "Made by Angela Victoria Fruelda",
   userMessages: [],
   botMessages: [],
   botGreeting: "oh hi! who are you?",

@@ -37,7 +37,6 @@ html {
   outline: none;
   background: transparent;
 }
-
 .login-box .user-box label {
   position: absolute;
   top:0;
@@ -53,7 +52,7 @@ html {
 .login-box .user-box input:valid ~ label {
   top: -20px;
   left: 0;
-  color: #7028e4;
+  color: #03e9f4;
   font-size: 12px;
 }
 
@@ -61,18 +60,18 @@ html {
   position: relative;
   display: inline-block;
   padding: 10px 20px;
-  color: #7028e4;
+  color: #03e9f4;
   font-size: 16px;
   text-decoration: none;
   text-transform: uppercase;
   overflow: hidden;
   transition: .5s;
   margin-top: 40px;
-  letter-spacing: 4px;
+  letter-spacing: 4px
 }
 
 .login-box input[type="submit"] {
-  background-color: #7028e4;
+  background-color: #03e9f4;
   color: #fff;
   font-weight: 700;
   text-transform: uppercase;
@@ -81,13 +80,12 @@ html {
   border: none;
   outline: none;
   cursor: pointer;
-  transition: background-color 0.3s ease, opacity 0.3s ease;
+  transition: background-color 0.3s ease;
 }
 
 .login-box input[type="submit"]:hover,
 .login-box input[type="submit"]:focus {
-  background-color: #7028e4;
-  opacity: 0.5;
+  background-color: #029ec4;
 }
 
 .icon {
@@ -103,51 +101,4 @@ html {
   margin: 20px;
 }
 
-.logout-button {
-  background: #ff7871;
-  border: none;
-  border-radius: 5px;
-  box-shadow: 4px 4px #db0035;
-  color: white;
-  cursor: pointer;
-  font-family: "Inconsolata", monospace;
-  font-size: 1rem;
-  margin: 2vh;
-  padding: 1rem 2rem;
-  position: relative;
-  text-transform: uppercase;
-  transition: background 0.3s ease, box-shadow 0.3s ease;
-}
 
-.logout-button:hover {
-  background: #e56562;
-  box-shadow: 4px 4px #c30028;
-}
-
-.logout-button:active {
-  background: #c30028;
-  box-shadow: 2px 2px #90001c;
-}
-
-.logout-button:focus {
-  outline: none;
-}
-
-.logout-button:before {
-  content: "Logout";
-  display: inline-block;
-  margin-right: 0.5rem;
-}
-
-.logout-button:after {
-  content: "";
-  width: 0.5rem;
-  height: 0.5rem;
-  border: 5px solid white;
-  border-left: 0;
-  border-bottom: 0;
-  transform: rotate(45deg);
-  position: absolute;
-  top: calc(50% - 0.5rem);
-  right: calc(10%);
-}

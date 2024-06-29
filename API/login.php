@@ -44,7 +44,7 @@
 
 				echo "
 				<script>alert('Invalid username or password')</script>
-				<script>window.location = 'index.php'</script>
+				<script>window.location = '../index.php'</script>
 				";
 			}
 		}else{
