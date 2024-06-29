@@ -9,7 +9,9 @@ var data = {
   userMessages: [],
   botMessages: [],
   botGreeting: "oh hi! who are you?",
-  botLoading: false
+  botLoading: false,
+  emotionalResponsesCount: 0,
+  chatLimitReached: false
 };
 
 class App extends React.Component {
@@ -18,48 +20,65 @@ class App extends React.Component {
 
     this.state = data;
   }
-
+  
+  
   updateUserMessages = newMessage => {
-    if (!newMessage) {
-      return;
-    }
+  if (!newMessage) {
+    return;
+  }
 
-    var updatedMessages = this.state.userMessages;
-    var updatedBotMessages = this.state.botMessages;
+  var updatedMessages = this.state.userMessages;
+  var updatedBotMessages = this.state.botMessages;
 
+  this.setState({
+    userMessages: updatedMessages.concat(newMessage),
+    botLoading: true
+  });
+
+  let botResponse = '';
+
+  if (!this.state.userName) {
     this.setState({
-      userMessages: updatedMessages.concat(newMessage),
-      botLoading: true
+      userName: newMessage,
+      botMessages: updatedBotMessages.concat(`Nice to meet you, ${newMessage}! How are you feeling today? (joy, sadness, anger, fear, disgust)`),
+      botLoading: false
     });
+    return;
+  }
 
-    var request = new Request(
-      "https://api.dialogflow.com/v1/query?v=20150910&contexts=shop&lang=en&query=" +
-        newMessage +
-        "&sessionId=12345",
-      {
-        headers: new Headers({
-          Authorization: "Bearer bc13467053ad45feaaa6f23c8bfafa9d"
-        })
-      }
-    );
-
-    fetch(request)
-      .then(response => response.json())
-      .then(json => {
-        var botResponse = json.result.fulfillment.speech;
-        this.setState({
-          botMessages: updatedBotMessages.concat(botResponse),
-          botLoading: false
-        });
-      })
-      .catch(error => {
-        console.log("ERROR:", error);
-        this.setState({
-          botMessages: updatedBotMessages.concat('?'),
-          botLoading: false
-        });
-      });
+  const emotionResponses = {
+    joy: `Hey ${this.state.userName}, I'm so happy to see you filled with joy! Your positivity is contagious, and it's wonderful to witness your happiness. Keep shining brightly and spreading that joy to everyone around you. Enjoy every moment of this happiness!`,
+    sadness: `Dear ${this.state.userName}, I know you're going through a tough time right now. Please take your time to process everything, and remember that this sadness won't last forever. Sending you lots of love and positive thoughts.`,
+    anger: `Hey ${this.state.userName}, I sense you're feeling upset right now. Remember, it's okay to feel angry sometimes. Take a deep breath and try to channel that energy constructively. I'm here if you need to talk or vent. Hang in there.`,
+    fear: `Hey ${this.state.userName}, I understand you might be feeling scared right now. Just know that it's normal to feel that way sometimes. Take a moment to breathe deeply and focus on things that bring you comfort. You're stronger than your fears, and I'm here to support you through this.`,
+    disgust: `Hey ${this.state.userName}, I sense you're feeling disgusted about something. It's okay to have those feelings—it shows you care about what's important to you. If you want to talk about it or need support, I'm here to listen.`
   };
+
+  if (emotionResponses[newMessage]) {
+    botResponse = emotionResponses[newMessage];
+    this.setState({
+      validResponseGiven: true,
+    });
+  } else if (this.state.validResponseGiven) {
+    botResponse = "Your chat limit for emotions is reached. See you next time!";
+    this.setState({
+      chatLimitReached: true,
+    });
+  } else {
+    botResponse = "I'm not sure how to respond to that because the girl who programmed me is dumb at JavaScript. Could you please tell me if you feel joy, sadness, anger, fear, or disgust?";
+  }
+
+  if (this.state.chatLimitReached) {
+    botResponse = "?";
+  }
+
+  this.setState({
+    botMessages: updatedBotMessages.concat(botResponse),
+    botLoading: false
+  });
+};
+
+
 
   scrollBubble = element => {
     if (element != null) {
@@ -123,25 +142,22 @@ class App extends React.Component {
   };
 
   render() {
-  return (
-    <div className="app-container">
-      <LogoutButton /> {/* Positioned here to ensure it's at the top left */}
-      <Header
-        headerText={this.state.headerText}
-        pText={this.state.pText}
-        p2Text={this.state.p2Text}
-      />
-      <div className="chat-container">
-        <ChatHeader />
-        {this.showMessages()}
-        <UserInput onInput={this.onInput} onClick={this.onClick} />
+    return (
+      <div className="app-container">
+        <LogoutButton /> {/* Positioned here to ensure it's at the top left */}
+        <Header
+          headerText={this.state.headerText}
+          pText={this.state.pText}
+          p2Text={this.state.p2Text}
+        />
+        <div className="chat-container">
+          <ChatHeader />
+          {this.showMessages()}
+          <UserInput onInput={this.onInput} onClick={this.onClick} />
+        </div>
       </div>
-    </div>
-  );
-}
-
-
-
+    );
+  }
 }
 
 class UserBubble extends React.Component {

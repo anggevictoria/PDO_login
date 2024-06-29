@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 
-<?php
+
+<?php /*
 require '../API/conn.php';
 session_start();
 
 if (!isset($_SESSION['user'])) {
     header('location:../index.php');
-}
+}*/
 ?>
 
 <html lang="en">
@@ -23,12 +24,14 @@ if (!isset($_SESSION['user'])) {
 </head>
 
 <body>
+
+<!--
     <?php
-    $id = $_SESSION['user'];
+    /*$id = $_SESSION['user'];
     $sql = $conn->prepare("SELECT * FROM `member` WHERE `mem_id`='$id'");
     $sql->execute();
-    $fetch = $sql->fetch();
-    ?>
+    $fetch = $sql->fetch();*/
+    ?> -->
     <div class="background"></div>
     <div id="app"></div>
 </body>
