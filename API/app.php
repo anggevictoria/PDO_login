@@ -25,7 +25,6 @@ class App extends React.Component {
     }
 
     var updatedMessages = this.state.userMessages;
-
     var updatedBotMessages = this.state.botMessages;
 
     this.setState({
@@ -33,7 +32,6 @@ class App extends React.Component {
       botLoading: true
     });
 
-    // Replace with your Dialogflow client token
     var request = new Request(
       "https://api.dialogflow.com/v1/query?v=20150910&contexts=shop&lang=en&query=" +
         newMessage +
@@ -49,7 +47,6 @@ class App extends React.Component {
       .then(response => response.json())
       .then(json => {
         var botResponse = json.result.fulfillment.speech;
-
         this.setState({
           botMessages: updatedBotMessages.concat(botResponse),
           botLoading: false
@@ -73,13 +70,11 @@ class App extends React.Component {
   showMessages = () => {
     var userMessages = this.state.userMessages;
     var botMessages = this.state.botMessages;
-
     var allMessages = [];
 
     var i = 0;
     for (; i < userMessages.length; i++) {
       if (i === userMessages.length - 1) {
-        // if bot replied to last message
         if (botMessages[i]) {
           allMessages.push(<UserBubble message={userMessages[i]} />);
           allMessages.push(
@@ -92,7 +87,6 @@ class App extends React.Component {
         }
         break;
       }
-
       allMessages.push(<UserBubble message={userMessages[i]} />);
       allMessages.push(<BotBubble message={botMessages[i]} />);
     }
@@ -110,7 +104,6 @@ class App extends React.Component {
   onInput = event => {
     if (event.key === "Enter") {
       var userInput = event.target.value;
-
       this.updateUserMessages(userInput);
       event.target.value = "";
     }
@@ -125,27 +118,29 @@ class App extends React.Component {
   onClick = () => {
     var inp = document.getElementById("chat");
     var userInput = inp.value;
-
     this.updateUserMessages(userInput);
     inp.value = "";
   };
 
   render() {
-    return (
-      <div className="app-container">
-        <Header
-          headerText={this.state.headerText}
-          pText={this.state.pText}
-          p2Text={this.state.p2Text}
-        />
-        <div className="chat-container">
-          <ChatHeader />
-          {this.showMessages()}
-          <UserInput onInput={this.onInput} onClick={this.onClick} />
-        </div>
+  return (
+    <div className="app-container">
+      <LogoutButton /> {/* Move the LogoutButton here */}
+      <Header
+        headerText={this.state.headerText}
+        pText={this.state.pText}
+        p2Text={this.state.p2Text}
+      />
+      <div className="chat-container">
+        <ChatHeader />
+        {this.showMessages()}
+        <UserInput onInput={this.onInput} onClick={this.onClick} />
       </div>
-    );
-  }
+    </div>
+  );
+}
+
+
 }
 
 class UserBubble extends React.Component {
@@ -169,6 +164,20 @@ class BotBubble extends React.Component {
           {this.props.message}
         </div>
       </div>
+    );
+  }
+}
+
+class LogoutButton extends React.Component {
+  handleLogout = () => {
+    window.location.href = '../API/logout.php';
+  };
+
+  render() {
+    return (
+      <button className="logout-button" onClick={this.handleLogout}>
+        Logout
+      </button>
     );
   }
 }

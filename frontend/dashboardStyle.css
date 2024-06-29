@@ -272,3 +272,35 @@ h2 {
     transform: none;
   }
 }
+
+.logout-button {
+  background: #ff7871;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 4px 4px #db0035;
+  color: white;
+  cursor: pointer;
+  font-family: "Inconsolata", monospace;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  text-transform: uppercase;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.logout-button:hover {
+  background: #e56562;
+  box-shadow: 4px 4px #c30028;
+}
+
+.logout-button:active {
+  background: #c30028;
+  box-shadow: 2px 2px #90001c;
+}
+
+.logout-button:focus {
+  outline: none;
+}
+

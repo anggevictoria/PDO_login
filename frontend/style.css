@@ -100,6 +100,56 @@ html {
     text-align: center;
     margin: 20px;
   }
+
+  .logout-button {
+    background: #ff7871;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 4px 4px #db0035;
+    color: white;
+    cursor: pointer;
+    font-family: "Inconsolata", monospace;
+    font-size: 1rem;
+    margin: 2vh;
+    padding: 1rem 2rem;
+    position: relative;
+    text-transform: uppercase;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .logout-button:hover {
+    background: #e56562;
+    box-shadow: 4px 4px #c30028;
+  }
+  
+  .logout-button:active {
+    background: #c30028;
+    box-shadow: 2px 2px #90001c;
+  }
+  
+  .logout-button:focus {
+    outline: none;
+  }
+  
+  .logout-button:before {
+    content: "Logout";
+    display: inline-block;
+    margin-right: 0.5rem;
+  }
+  
+  .logout-button:after {
+    content: "";
+    width: 0.5rem;
+    height: 0.5rem;
+    border: 5px solid white;
+    border-left: 0;
+    border-bottom: 0;
+    transform: rotate(45deg);
+    position: absolute;
+    top: calc(50% - 0.5rem);
+    right: calc(10%);
+  }
+  
   
   
   
