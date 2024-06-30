@@ -60,10 +60,10 @@ class App extends React.Component {
   }
 
   const emotionResponses = {
-    joy: `Hey ${firstName}, I'm so happy to see you filled with joy! Your positivity is contagious, and it's wonderful to witness your happiness. Keep shining brightly and spreading that joy to everyone around you. Enjoy every moment of this happiness!`,
-    sadness: `Dear ${firstName}, I know you're going through a tough time right now. Please take your time to process everything, and remember that this sadness won't last forever. Sending you lots of love and positive thoughts <3`,
+    joy: `Hey ${firstName}, I'm so happy to see u filled with joy! Your positivity is contagious, and it's wonderful to witness ur happiness. Keep shining brightly and spreading that joy to everyone around you. Enjoy every moment of this happiness!`,
+    sadness: `Dear ${firstName}, I know ur going through a tough time right now. Pls tyt to process everything, and remember that this sadness won't last forever. Sending u lots of love and positive thoughts <3`,
     anger: `Hey ${firstName}, I sense you're feeling upset right now. Remember, it's okay to feel angry sometimes. Take a deep breath and try to channel that energy constructively.`,
-    fear: `Hey ${firstName}, I understand you might be feeling scared right now. Just know that it's normal to feel that way sometimes. Take a moment to breathe deeply and focus on things that bring you comfort. You're stronger than your fears.`,
+    fear: `Hey ${firstName}, I understand you might be feeling scared right now. Just know that it's normal to feel that way sometimes. Take a moment to breathe deeply and focus on things that bring you comfort. Remember, ur stronger than your fears.`,
     disgust: `Hey ${firstName}, I sense you're feeling disgusted about something. It's okay to have those feelings—it shows you care about what's important to you.`
   };
 
