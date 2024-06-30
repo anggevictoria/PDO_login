@@ -1,0 +1,28 @@
+{
+    "remotePath": "./public_html/",
+    "host": "files.000webhost.com",
+    "username": "embedded-1255",
+    "password": "sasmak-4Rogvy-fusjik",
+    "port": 21,
+    "secure": false,
+    "protocol": "ftp",
+    "uploadOnSave": false,
+    "passive": false,
+    "debug": false,
+    "privateKeyPath": null,
+    "passphrase": null,
+    "agent": null,
+    "allow": [],
+    "ignore": [
+        "\\.vscode",
+        "\\.git",
+        "\\.DS_Store"
+    ],
+    "generatedFiles": {
+        "extensionsToInclude": [
+            ""
+        ],
+        "path": ""
+    }
+}
+
