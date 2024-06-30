@@ -9,7 +9,7 @@ html, body, #app {
 
 body {
   font-family: "Inconsolata", monospace;
-  background: linear-gradient(-20deg, #ddd6f3 0%, #faaca8 100%, #faaca8 100%);
+  background: linear-gradient(-20deg, #ddd6f3 0%, #faaca8 100%);
   color: white;
   background-attachment: fixed;
 }
@@ -32,28 +32,18 @@ h2 {
 
 .app-container {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: stretch;
-  padding: 5vw 10vw 5vw 10vw;
+  flex-direction: column;
+  align-items: center;
+  padding: 5vh 10vw;
 }
 
 .app-container .header {
-  animation: fade 1s ease 1.5s both;
-  z-index: 20;
-  text-align: right;
-  flex: 1 0 20vw;
-  margin: 0 5vw 5vw 0;
-  margin-top: auto;
-  text-shadow: 1px 2px 0px rgba(244, 59, 71, 0.4), 3px 2px 0px rgba(244, 59, 71, 0.4), 2px 3px 0px rgba(244, 59, 71, 0.4);
+  text-align: center;
+  margin-bottom: 2vh;
   position: relative;
 }
 
 .app-container .header .header-img {
-  position: absolute;
-  top: -4rem;
-  right: 10vw;
-  z-index: -1;
   width: 12rem;
   height: 12rem;
   background: url("https://zephyo.github.io/22Days/code/10/graphics/rikkakuma.gif") no-repeat;
@@ -61,21 +51,21 @@ h2 {
 }
 
 .app-container .chat-container {
-  animation: fade 0.5s ease 0.2s both;
-  transform: perspective(100vh) rotateY(-7deg);
   border-radius: 12px;
   box-shadow: 10px 5px 40px 10px rgba(244, 59, 71, 0.4);
   flex: 1 1 70vh;
   display: flex;
   flex-direction: column;
   min-height: 60vh;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 15px;
 }
 
 .app-container .chat-container .chat-header {
   border: 4px solid #453a94;
   border-bottom: 0;
   border-radius: 12px 12px 0 0;
-  flex: none;
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -92,26 +82,11 @@ h2 {
   box-shadow: 3px 3px #db0035;
 }
 
-.app-container .chat-container .chat-header .dot:nth-child(1) {
-  animation: grow 0.3s cubic-bezier(0.36, -0.04, 0.15, 1.64) 0.3s both;
-}
-
-.app-container .chat-container .chat-header .dot:nth-child(2) {
-  animation: grow 0.3s cubic-bezier(0.36, -0.04, 0.15, 1.64) 0.5s both;
-}
-
-.app-container .chat-container .chat-header .dot:nth-child(3) {
-  animation: grow 0.3s cubic-bezier(0.36, -0.04, 0.15, 1.64) 0.7s both;
-}
-
 .app-container .chat-container .msg-container {
-  background: rgba(255, 255, 255, 0.2);
-  padding: 15px 15px 0 15px;
   flex: auto;
-  border: 4px solid #453a94;
   display: flex;
   flex-direction: column;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 .app-container .chat-container .msg-container .user-message-container {
@@ -119,22 +94,17 @@ h2 {
 }
 
 .app-container .chat-container .msg-container .bot-message-container {
-  flex: none;
   display: flex;
+  align-items: center;
 }
 
 .app-container .chat-container .msg-container .bot-message-container .bot-avatar {
   background-image: url("https://zephyo.github.io/22Days/code/10/graphics/cutebearicon.gif");
   background-size: cover;
-  background-position: center;
   border-radius: 50%;
   width: 52px;
   height: 52px;
   margin-right: 1vw;
-}
-
-.app-container .chat-container .msg-container .bot-message-container:first-child .chat-bubble {
-  animation: pop 0.3s cubic-bezier(0.36, -0.04, 0.15, 1.64) 0.9s both;
 }
 
 .app-container .chat-container .msg-container .chat-bubble {
@@ -147,43 +117,32 @@ h2 {
   word-wrap: break-word;
   word-break: break-word;
   hyphens: auto;
-  opacity: 0;
-  animation: pop 0.3s cubic-bezier(0.36, -0.04, 0.15, 1.64) forwards;
-  will-change: transform;
 }
 
 .app-container .chat-container .msg-container .chat-bubble.user {
   float: right;
-  border-top-right-radius: 0;
   background: #453a94;
   color: #e5b2ca;
-  transform-origin: top right;
 }
 
 .app-container .chat-container .msg-container .chat-bubble.bot {
-  border-top-left-radius: 0;
   background: white;
   color: #7028e4;
-  transform-origin: top left;
 }
 
 .app-container .chat-container .input-container {
-  animation: up 0.35s cubic-bezier(0.36, -0.04, 0.15, 1.64) 0.5s both;
   border: 4px solid #453a94;
   border-top: 0;
   border-radius: 0 0 12px 12px;
   z-index: 30;
-  flex: none;
   height: 14vh;
   max-height: 100px;
   background: rgba(255, 255, 255, 0.5);
   display: flex;
   justify-content: stretch;
-  transition: background 0.3s ease;
 }
 
 .app-container .chat-container .input-container input {
-  font-weight: 700;
   flex: auto;
   background: transparent;
   border: none;
@@ -193,7 +152,7 @@ h2 {
   padding: 1.5rem;
 }
 
-.app-container .chat-container .input-container *::placeholder {
+.app-container .chat-container .input-container input::placeholder {
   color: #db0035;
 }
 
@@ -218,59 +177,6 @@ h2 {
   position: absolute;
   top: calc(50% - 0.5rem);
   left: calc(50% - 0.5rem);
-}
-
-.background {
-  z-index: -1;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: url("https://zephyo.github.io/22Days/code/10/graphics/manu-franco-unsplash.jpg") no-repeat 0 0;
-  filter: blur(5vh);
-  background-size: cover;
-  background-position: center;
-}
-
-@keyframes pop {
-  from {
-    opacity: 0;
-    transform: scale(0.66);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-
-@keyframes fade {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes grow {
-  from {
-    transform: scale(0);
-  }
-  to {
-    transform: none;
-  }
-}
-
-@keyframes up {
-  from {
-    opacity: 0;
-    transform: translateY(1rem);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
 }
 
 .logout-button {
@@ -304,5 +210,3 @@ h2 {
 .logout-button:focus {
   outline: none;
 }
-
-
