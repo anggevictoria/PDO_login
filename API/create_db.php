@@ -2,6 +2,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
+$dbname = "db_login";
 
 try {
     // Create connection
@@ -9,12 +10,12 @@ try {
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     // Create database if it doesn't exist
-    $dbname = "db_login"; // Your desired database name
     $create_db_sql = "CREATE DATABASE IF NOT EXISTS $dbname";
     $conn->exec($create_db_sql);
     
     // Switch to the newly created or existing database
-    $conn->exec("USE $dbname");
+    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     // Create member table if it doesn't exist
     $create_table_sql = "CREATE TABLE IF NOT EXISTS member (

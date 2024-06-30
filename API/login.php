@@ -2,13 +2,11 @@
 session_start();
 // Starts a new session or resumes an existing session. This is necessary for managing user sessions.
 
-
-require_once './conn.php';
-// Includes the database connection file.
-
 // Include create_db.php to ensure database and table existence
 require_once './create_db.php';
 
+require_once './conn.php';
+// Includes the database connection file.
 
 if (isset($_POST['login'])) {
 	// Checks if the login form was submitted.
