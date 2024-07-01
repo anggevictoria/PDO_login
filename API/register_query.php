@@ -23,11 +23,11 @@ if (isset($_POST['register'])) {
 		}
 		$_SESSION['message'] = array("text" => "User successfully created.", "alert" => "info");
 		$conn = null;
-		header('location:../index.php');
+		header('location:../index.html');
 	} else {
 		echo "
 				<script>alert('Please fill up the required field!')</script>
-				<script>window.location = 'registration.php'</script>
+				<script>window.location = 'registration.html'</script>
 			";
 	}
 }
